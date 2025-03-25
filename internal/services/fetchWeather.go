@@ -9,8 +9,7 @@ import (
 
 func FetchWeatherData(lat, lon string) (map[string]interface{}, error) {
 
-	//TODO Change Weather Point String to Secret Manager
-	gridpointURL := fmt.Sprintf("https://api.weather.gov/points/%s,%s", lat, lon)
+	gridpointURL := fmt.Sprintf(utils.NWSAPI, lat, lon)
 	resp, err := http.Get(gridpointURL)
 	if err != nil {
 		return nil, fmt.Errorf(utils.ErrorFetchGPD, err)
